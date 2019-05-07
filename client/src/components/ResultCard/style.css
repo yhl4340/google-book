@@ -1,0 +1,12 @@
+p img.card-img-top {
+  float: left;
+  position: relative;
+  width: 15%;
+  height: 150px;
+  border: red dotted 1px;
+  margin-top:30px;
+  margin-left:50px;
+}
+.card-body{
+  border:green solide 1px;
+}
