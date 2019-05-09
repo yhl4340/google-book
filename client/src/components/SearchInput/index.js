@@ -13,7 +13,7 @@ function SearchInput (props){
                 type='text'
                 name='search'
                 id='search'/>
-                <button  className="btn btn-primary mt-3" onClick={props.handleFormSubmit}>Search</button>
+                <button onClick={(event) => props.handleFormSubmit(event)}>Search</button>
             </div>
         </form>
     )

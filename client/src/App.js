@@ -23,9 +23,8 @@ function App() {
         </div>
       </Router>
 
-      <SearchInput />
-      {/* {this.state.books.map(book => )} */}
-      <ResultCard />
+      <SearchInput/>
+     {/* <Books/> */}
     </div>
   );
 }

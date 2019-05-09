@@ -9,7 +9,7 @@ import Navtab from "../../components/Navtab";
 import Saved from "../../pages/Saved";
 import ResultCard from "../../components/ResultCard";
 
-class Books extends Comment {
+class Books extends Component {
   state = {
     books: [],
     title: "",
@@ -24,8 +24,8 @@ class Books extends Comment {
     this.loadBooks();
   }
 
-  loadBooks = () => {
-    API.search()
+  loadBooks = (query) => {
+    API.search(query)
       .then(res =>
         this.setState({
           books: res.data,
@@ -44,29 +44,37 @@ class Books extends Comment {
       .catch(err => console.log(err));
   };
 
+
   handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({ [name]: value });
-  };
-  handleFormSubmit = event => {
+    const searchTerms = event.target.value;
+    this.setState({
+        search: searchTerms
+    });
+};
+
+handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        description: this.state.description,
-        image: this.state.image,
-        link: this.state.link
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+   console.log('clciked');
+    API.search(this.state.search)
+        .then(res => {
+            this.setState({
+                books: res.data.items
+            });
+        }).catch(err => console.log(err));
+};
+
 
   render() {
     return (
       <div>
         <h2>---test---</h2>
+        <SearchInput 
+        onClick={this.handleFormSubmit}
+        value = {this.title}
+        name="search"
+        onChange={this.handleInputChange}
+        />
+ 
         <ResultCard
           value={this.state.title}
           id={this.state.id}
@@ -76,6 +84,7 @@ class Books extends Comment {
           link={this.state.link}
           synopsis={this.state.synopsis}
         />
+      
       </div>
     );
   }
