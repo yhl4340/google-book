@@ -21,7 +21,7 @@ export default {
         return axios.post('/api/book',data )
     },
     search: function(query){
-        return axios.get(baseUrl+ query);
-        console.log('getting anything?');
+        console.log('getting anything?', baseUrl+ query);
+        return axios.get(baseUrl+ query);   
     }
 };

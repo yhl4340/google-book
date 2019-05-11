@@ -46,20 +46,22 @@ class Books extends Component {
 
 
   handleInputChange = event => {
+    
     const searchTerms = event.target.value;
     this.setState({
-        search: searchTerms
+        title: searchTerms
     });
 };
 
 handleFormSubmit = event => {
     event.preventDefault();
-   console.log('clciked');
-    API.search(this.state.search)
+   console.log('clciked', this.state.title);
+    API.search(this.state.title)
         .then(res => {
-            this.setState({
-                books: res.data.items
-            });
+          console.log(res.data)
+            // this.setState({
+            //     books: res.data.items
+            // });
         }).catch(err => console.log(err));
 };
 
@@ -70,12 +72,12 @@ handleFormSubmit = event => {
         <h2>---test---</h2>
         <SearchInput 
         onClick={this.handleFormSubmit}
-        value = {this.title}
-        name="search"
+        value = {this.state.title}
+        title = "catas"
         onChange={this.handleInputChange}
         />
  
-        <ResultCard
+        {/* <ResultCard
           value={this.state.title}
           id={this.state.id}
           key={this.state.id}
@@ -83,7 +85,7 @@ handleFormSubmit = event => {
           image={this.state.image}
           link={this.state.link}
           synopsis={this.state.synopsis}
-        />
+        /> */}
       
       </div>
     );

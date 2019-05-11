@@ -23,7 +23,7 @@ function App() {
         </div>
       </Router>
 
-      <SearchInput/>
+      <Books/>
      {/* <Books/> */}
     </div>
   );

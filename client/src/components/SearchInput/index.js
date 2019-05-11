@@ -6,14 +6,14 @@ function SearchInput (props){
     return (
         <form>
             <div className='search' >
-                <label htmlFor='search'>Search:</label>
+                <label htmlFor='search'>Search:{props.title}</label>
                 <input 
                 className='form-control'
-                onChange={props.handleInputChange}
+                onChange={(e) => props.onChange(e)}
                 type='text'
                 name='search'
                 id='search'/>
-                <button onClick={(event) => props.handleFormSubmit(event)}>Search</button>
+                <button onClick={(event) => props.onClick(event)}>Search</button>
             </div>
         </form>
     )
